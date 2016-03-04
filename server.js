@@ -24,12 +24,21 @@ app.get('/teams/', function(req,res){
     res.json(team)
   })
 })
+
+app.get('/teams/:id', function(req,res){
+  Team.findOne({_id:req.params.id}, function(err,team){
+    if (err) throw err
+    res.json({success:true, message: 'team found', team: team})
+  })
+  
+})
 app.post('/teams/', function(req,res){
   Team.create(req.body, function(err,team){
     if(err) return console.log(err)
     res.json(team)
   })
 })
+
 app.listen(3000, function(err){
   if(err) return console.log(err)
   console.log("Listening to port 3000");
