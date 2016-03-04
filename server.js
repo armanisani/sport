@@ -23,6 +23,9 @@ app.get('/teams/', function(req,res){
     res.json(team)
   })
 })
-app.create('/teams/', function(req,res){
-  Team.create
+app.post('/teams/', function(req,res){
+  Team.create(res.body, function(err,team){
+    if(err) return console.log(err)
+    res.json(team)
+  })
 })
