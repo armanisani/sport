@@ -1,13 +1,13 @@
 var mongoose = require('mongoose')
 
 
-var playerSchema = Schema({
+var playerSchema = new mongoose.Schema({
   name: String,
   age: Number,
   teams: [{type: mongoose.Schema.Types.ObjectId, ref: 'Team'}]
 })
 
 
-var Player = mongoose.model("Team",playerSchema)
+var Player = mongoose.model("Player",playerSchema)
 
 module.exports = Player
