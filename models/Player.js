@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 var playerSchema = new mongoose.Schema({
   name: String,
   age: Number,
-  teams: [{type: mongoose.Schema.Types.ObjectId, ref: 'Team'}]
+  _team: [{type: mongoose.Schema.Types.ObjectId, ref: 'Team'}]
 })
 
 
