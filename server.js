@@ -30,12 +30,26 @@ app.get('/teams/:id', function(req,res){
     if (err) throw err
     res.json({success:true, message: 'team found', team: team})
   })
-  
 })
+
+app.delete('/teams/:id', function(req,res){
+  Team.findOneAndRemove({_id:req.params.id}, function(err){
+    if (err) throw err
+    res.json({success:true, message: 'team deleted'})
+  })
+})
+
 app.post('/teams/', function(req,res){
   Team.create(req.body, function(err,team){
     if(err) return console.log(err)
     res.json(team)
+  })
+})
+
+app.patch('/teams/:id', function(req,res){
+  Team.findOneAndUpdate({_id:req.params.id}, req.body, {new:true}, function(err,team){
+    if (err) throw err
+    res.json({success:true, message:'team updated', team: team})
   })
 })
 
